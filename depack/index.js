@@ -2,8 +2,8 @@ const _Accepts = require('./depack')
 
 class Accepts extends _Accepts {
   /**
-   * Create a new Accepts object for the given req.
-   * @param {!http.IncomingMessage} req
+   * Create a new Accepts object for the given request.
+   * @param {!http.IncomingMessage} request
    */
   constructor(request) {
     super(request)

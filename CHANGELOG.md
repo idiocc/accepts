@@ -1,5 +1,9 @@
 ## 5 May 2019
 
+### [1.0.2](https://github.com/idiocc/accepts/compare/v1.0.1...v1.0.2)
+
+- [doc] Fix _JSDoc_ param to constructor.
+
 ### [1.0.1](https://github.com/idiocc/accepts/compare/v1.0.0...v1.0.1)
 
 - [deps] Move `@rqt/aqt` to dev-dependencies.
