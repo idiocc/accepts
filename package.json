@@ -47,13 +47,11 @@
   "homepage": "https://github.com/idiocc/accepts#readme",
   "devDependencies": {
     "@goa/negotiator": "^1.0.0",
-    "alamode": "^2.1.1",
-    "documentary": "^1.26.5",
+    "@rqt/aqt": "^1.2.5",
+    "alamode": "^2.1.2",
+    "documentary": "^1.27.1",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "^4.1.0-alpha"
-  },
-  "dependencies": {
-    "@rqt/aqt": "^1.2.5"
+    "zoroaster": "^4.1.1-alpha"
   }
 }
