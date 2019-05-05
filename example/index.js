@@ -39,6 +39,6 @@ server.listen(0, async () => {
   ;({ body, headers } = await aqt(url, {
     headers: { 'accept': 'text/plain' },
   }))
-  console.log('Response:', body, '\t\tType:', headers['content-type'])
+  console.log('Response:', body, '\tType:', headers['content-type'])
   server.close()
 })

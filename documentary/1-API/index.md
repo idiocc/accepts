@@ -12,12 +12,12 @@ import Accepts from '@goa/accepts'
 
 The instances of this class allow to negotiate languages, charsets, encoding and types and additionally:
 
-- Allows types as an array or arguments list, ie (['text/html', 'application/json']) as well as ('text/html', 'application/json');
+- Allows types as an array or arguments list, i.e. `(['text/html', 'application/json'])` as well as `('text/html', 'application/json')`;
 - Allows type shorthands such as json;
 - Returns false when no types match;
 - Treats non-existent headers as *.
 
-```### constructor
+```### constructor => Accepts
 [
   ["req", "http.IncomingMessage"]
 ]
