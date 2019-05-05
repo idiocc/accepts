@@ -4,8 +4,10 @@
 
 ## Copyright
 
-(c) [Idio][1] 2019
+Original work, documentation and testing by [Jonathan Ong and Douglas Christopher Wilson](https://github.com/jshttp/accepts).
 
-[1]: https://idio.cc
+---
+
+<IdioFooter />
 
 %~ -1%
