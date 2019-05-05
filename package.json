@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "b": "alamode src -o build -s",
-    "d": "typal types/index.js types/externs.js",
+    "d": "typal types/externs.js",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
@@ -30,7 +30,14 @@
   },
   "keywords": [
     "accepts",
-    "goa"
+    "goa",
+    "content",
+    "negotiation",
+    "accept",
+    "language",
+    "encoding",
+    "type",
+    "content-type"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
