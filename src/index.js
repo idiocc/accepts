@@ -182,7 +182,6 @@ function extToMime(type) {
 /**
  * Check if mime is valid.
  * @param {string} type
- * @return {string}
  * @private
  */
 function validMime(type) {
