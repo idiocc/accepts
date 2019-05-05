@@ -2,7 +2,7 @@
   "name": "@goa/accepts",
   "version": "0.0.0-pre",
   "description": "[fork] Higher-Level Content Negotiation In ES6 Optimised With Google Closure Compiler.",
-  "main": "build/index.js",
+  "main": "depack/index.js",
   "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
@@ -13,18 +13,16 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "b": "alamode src -o build -s",
-    "d": "yarn-s d1 externs",
-    "d1": "typal src -c",
-    "externs": "typal externs.js -e",
+    "d": "typal types/index.js types/externs.js",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
-    "build",
+    "depack",
     "src",
-    "externs.js"
+    "types"
   ],
-  "externs": "externs.js",
+  "externs": "types/externs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/idiocc/accepts.git"
@@ -40,6 +38,7 @@
   },
   "homepage": "https://github.com/idiocc/accepts#readme",
   "devDependencies": {
+    "@goa/negotiator": "^1.0.0",
     "alamode": "^2.1.1",
     "documentary": "^1.26.5",
     "eslint-config-artdeco": "1.0.1",
