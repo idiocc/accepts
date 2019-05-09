@@ -1,3 +1,9 @@
+## 9 May 2019
+
+### [1.0.3](https://github.com/idiocc/accepts/compare/v1.0.2...v1.0.3)
+
+- [deps] Move `mime-types` to `@goa/mime-types`.
+
 ## 5 May 2019
 
 ### [1.0.2](https://github.com/idiocc/accepts/compare/v1.0.1...v1.0.2)
