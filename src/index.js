@@ -1,5 +1,5 @@
 import Negotiator from '@goa/negotiator'
-import { lookup } from './mime-types'
+import { lookup } from '@goa/mime-types'
 
 /**
  * @implements {_goa.Accepts}
@@ -101,7 +101,8 @@ export default class Accepts {
       return this.negotiator.encodings()
     }
 
-    return this.negotiator.encodings(encodings)[0] || false
+    return this.negotiator.encodings( /** @type {!Array<string>} */
+      (encodings))[0] || false
   }
   get encoding() {
     return this.encodings
@@ -128,7 +129,8 @@ export default class Accepts {
       return this.negotiator.charsets()
     }
 
-    return this.negotiator.charsets(charsets)[0] || false
+    return this.negotiator.charsets( /** @type {!Array<string>} */
+      (charsets))[0] || false
   }
   get charset() {
     return this.charsets
@@ -155,7 +157,8 @@ export default class Accepts {
       return this.negotiator.languages()
     }
 
-    return this.negotiator.languages(languages)[0] || false
+    return this.negotiator.languages(
+      /** @type {!Array<string>} */ (languages))[0] || false
   }
   get lang() {
     return this.languages

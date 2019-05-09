@@ -331,7 +331,7 @@ function O(a) {
  Copyright(c) 2012 Federico Romero
  Copyright(c) 2012-2014 Isaac Z. Schlueter
  Copyright(c) 2015 Douglas Christopher Wilson
- https://www.npmjs.com/package/negotiator
+ https://npmjs.org/negotiator
 */
 class U {
   constructor(a) {
@@ -363,11 +363,12 @@ class U {
     return Q(this.headers.accept, a);
   }
 }
-;/*
+;const {extname:V} = path;
+/*
  MIT Copyright (c) 2014 Jonathan Ong me@jongleberry.com
  https://npmjs.com/package/mime-db
 */
-var V = {"application/1d-interleaved-parityfec":{source:"iana"}, "application/3gpdash-qoe-report+xml":{source:"iana", compressible:!0}, "application/3gpp-ims+xml":{source:"iana", compressible:!0}, "application/a2l":{source:"iana"}, "application/activemessage":{source:"iana"}, "application/activity+json":{source:"iana", compressible:!0}, "application/alto-costmap+json":{source:"iana", compressible:!0}, "application/alto-costmapfilter+json":{source:"iana", compressible:!0}, "application/alto-directory+json":{source:"iana", 
+var W = {"application/1d-interleaved-parityfec":{source:"iana"}, "application/3gpdash-qoe-report+xml":{source:"iana", compressible:!0}, "application/3gpp-ims+xml":{source:"iana", compressible:!0}, "application/a2l":{source:"iana"}, "application/activemessage":{source:"iana"}, "application/activity+json":{source:"iana", compressible:!0}, "application/alto-costmap+json":{source:"iana", compressible:!0}, "application/alto-costmapfilter+json":{source:"iana", compressible:!0}, "application/alto-directory+json":{source:"iana", 
 compressible:!0}, "application/alto-endpointcost+json":{source:"iana", compressible:!0}, "application/alto-endpointcostparams+json":{source:"iana", compressible:!0}, "application/alto-endpointprop+json":{source:"iana", compressible:!0}, "application/alto-endpointpropparams+json":{source:"iana", compressible:!0}, "application/alto-error+json":{source:"iana", compressible:!0}, "application/alto-networkmap+json":{source:"iana", compressible:!0}, "application/alto-networkmapfilter+json":{source:"iana", 
 compressible:!0}, "application/aml":{source:"iana"}, "application/andrew-inset":{source:"iana", extensions:["ez"]}, "application/applefile":{source:"iana"}, "application/applixware":{source:"apache", extensions:["aw"]}, "application/atf":{source:"iana"}, "application/atfx":{source:"iana"}, "application/atom+xml":{source:"iana", compressible:!0, extensions:["atom"]}, "application/atomcat+xml":{source:"iana", compressible:!0, extensions:["atomcat"]}, "application/atomdeleted+xml":{source:"iana", compressible:!0}, 
 "application/atomicmail":{source:"iana"}, "application/atomsvc+xml":{source:"iana", compressible:!0, extensions:["atomsvc"]}, "application/atsc-dwd+xml":{source:"iana", compressible:!0}, "application/atsc-held+xml":{source:"iana", compressible:!0}, "application/atsc-rsat+xml":{source:"iana", compressible:!0}, "application/atxml":{source:"iana"}, "application/auth-policy+xml":{source:"iana", compressible:!0}, "application/bacnet-xdd+zip":{source:"iana", compressible:!1}, "application/batch-smtp":{source:"iana"}, 
@@ -615,7 +616,6 @@ compressible:!1, extensions:["ogv"]}, "video/parityfec":{source:"iana"}, "video/
 "video/vnd.sealed.mpeg4":{source:"iana"}, "video/vnd.sealed.swf":{source:"iana"}, "video/vnd.sealedmedia.softseal.mov":{source:"iana"}, "video/vnd.uvvu.mp4":{source:"iana", extensions:["uvu", "uvvu"]}, "video/vnd.vivo":{source:"iana", extensions:["viv"]}, "video/vp8":{source:"iana"}, "video/webm":{source:"apache", compressible:!1, extensions:["webm"]}, "video/x-f4v":{source:"apache", extensions:["f4v"]}, "video/x-fli":{source:"apache", extensions:["fli"]}, "video/x-flv":{source:"apache", compressible:!1, 
 extensions:["flv"]}, "video/x-m4v":{source:"apache", extensions:["m4v"]}, "video/x-matroska":{source:"apache", compressible:!1, extensions:["mkv", "mk3d", "mks"]}, "video/x-mng":{source:"apache", extensions:["mng"]}, "video/x-ms-asf":{source:"apache", extensions:["asf", "asx"]}, "video/x-ms-vob":{source:"apache", extensions:["vob"]}, "video/x-ms-wm":{source:"apache", extensions:["wm"]}, "video/x-ms-wmv":{source:"apache", compressible:!1, extensions:["wmv"]}, "video/x-ms-wmx":{source:"apache", extensions:["wmx"]}, 
 "video/x-ms-wvx":{source:"apache", extensions:["wvx"]}, "video/x-msvideo":{source:"apache", extensions:["avi"]}, "video/x-sgi-movie":{source:"apache", extensions:["movie"]}, "video/x-smv":{source:"apache", extensions:["smv"]}, "x-conference/x-cooltalk":{source:"apache", extensions:["ice"]}, "x-shader/x-fragment":{compressible:!0}, "x-shader/x-vertex":{compressible:!0}};
-const {extname:W} = path;
 /*
  MIT
  Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
@@ -626,14 +626,14 @@ const X = Object.create(null), Y = Object.create(null);
 Z();
 function Z() {
   const a = ["nginx", "apache", void 0, "iana"];
-  Object.keys(V).forEach(b => {
-    const c = V[b], e = c.extensions;
+  Object.keys(W).forEach(b => {
+    const c = W[b], e = c.extensions;
     if (e && e.length) {
       X[b] = e;
       for (let g = 0; g < e.length; g++) {
         const h = e[g];
         if (Y[h]) {
-          const d = a.indexOf(V[Y[h]].source), k = a.indexOf(c.source);
+          const d = a.indexOf(W[Y[h]].source), k = a.indexOf(c.source);
           if ("application/octet-stream" != Y[h] && (d > k || d == k && "application/" == Y[h].substr(0, 12))) {
             continue;
           }
@@ -699,7 +699,7 @@ class aa {
   }
 }
 function ba(a) {
-  -1 == a.indexOf("/") && (a = a && "string" == typeof a ? (a = W("x." + a).toLowerCase().substr(1)) ? Y[a] || !1 : !1 : !1);
+  -1 == a.indexOf("/") && (a = a && "string" == typeof a ? (a = V("x." + a).toLowerCase().substr(1)) ? Y[a] || !1 : !1 : !1);
   return a;
 }
 function ca(a) {
