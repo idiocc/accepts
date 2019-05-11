@@ -87,7 +87,7 @@ export default class Accepts {
    *
    *     ['gzip', 'deflate']
    *
-   * @param {string|!Array<string>} encodings
+   * @param {string|!Array<string>} [encodings]
    * @param {...string} args
    */
   encodings(encodings, ...args) {
@@ -115,7 +115,7 @@ export default class Accepts {
    *
    *     ['utf-8', 'utf-7', 'iso-8859-1']
    *
-   * @param {string|!Array<string>} charsets
+   * @param {string|!Array<string>} [charsets]
    * @param {...string} args
    */
   charsets(charsets, ...args) {
@@ -143,7 +143,7 @@ export default class Accepts {
    *
    *     ['es', 'pt', 'en']
    *
-   * @param {string|!Array<string>} languages
+   * @param {string|!Array<string>} [languages]
    * @param {...string} args
    */
   languages(languages, ...args) {
