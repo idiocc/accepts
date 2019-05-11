@@ -1,5 +1,10 @@
 ## 11 May 2019
 
+### [1.1.0](https://github.com/idiocc/accepts/compare/v1.0.4...v1.1.0)
+
+- [fix] Use `＊` in the documentation.
+- [types] Publish `types/index.js` for access in other packages.
+
 ### [1.0.4](https://github.com/idiocc/accepts/compare/v1.0.3...v1.0.4)
 
 - [doc] Allow empty arguments to functions, change documented `undefined` to `false`.
