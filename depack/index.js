@@ -10,7 +10,7 @@ class Accepts extends _Accepts {
   }
   /**
    * Check if the given `type(s)` is acceptable, returning
-   * the best match when true, otherwise `undefined`, in which
+   * the best match when true, otherwise `false`, in which
    * case you should respond with 406 "Not Acceptable".
    *
    * The `type` value may be a single mime type string
@@ -21,30 +21,34 @@ class Accepts extends _Accepts {
    * Examples:
    *
    *     // Accept: text/html
-   *     this.types('html');
+   *     this.types('html')
    *     // => "html"
    *
    *     // Accept: text/*, application/json
-   *     this.types('html');
+   *     this.types('html')
    *     // => "html"
-   *     this.types('text/html');
+   *     this.types('text/html')
    *     // => "text/html"
-   *     this.types('json', 'text');
+   *     this.types('json', 'text')
    *     // => "json"
-   *     this.types('application/json');
+   *     this.types('application/json')
    *     // => "application/json"
    *
    *     // Accept: text/*, application/json
-   *     this.types('image/png');
-   *     this.types('png');
+   *     this.types('image/png')
+   *     this.types('png')
    *     // => undefined
    *
    *     // Accept: text/*;q=.5, application/json
-   *     this.types(['html', 'json']);
-   *     this.types('html', 'json');
+   *     this.types(['html', 'json'])
+   *     this.types('html', 'json')
    *     // => "json"
    *
-   * @param {string|!Array<string>} types
+   *     // Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain
+   *     this.types()
+   *     // => ["text/html", "text/plain", "image/jpeg", "application/*""]
+   *
+   * @param {string|!Array<string>} [types]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -53,7 +57,7 @@ class Accepts extends _Accepts {
   }
   /**
    * Check if the given `type(s)` is acceptable, returning
-   * the best match when true, otherwise `undefined`, in which
+   * the best match when true, otherwise `false`, in which
    * case you should respond with 406 "Not Acceptable".
    *
    * The `type` value may be a single mime type string
@@ -64,30 +68,34 @@ class Accepts extends _Accepts {
    * Examples:
    *
    *     // Accept: text/html
-   *     this.types('html');
+   *     this.types('html')
    *     // => "html"
    *
    *     // Accept: text/*, application/json
-   *     this.types('html');
+   *     this.types('html')
    *     // => "html"
-   *     this.types('text/html');
+   *     this.types('text/html')
    *     // => "text/html"
-   *     this.types('json', 'text');
+   *     this.types('json', 'text')
    *     // => "json"
-   *     this.types('application/json');
+   *     this.types('application/json')
    *     // => "application/json"
    *
    *     // Accept: text/*, application/json
-   *     this.types('image/png');
-   *     this.types('png');
+   *     this.types('image/png')
+   *     this.types('png')
    *     // => undefined
    *
    *     // Accept: text/*;q=.5, application/json
-   *     this.types(['html', 'json']);
-   *     this.types('html', 'json');
+   *     this.types(['html', 'json'])
+   *     this.types('html', 'json')
    *     // => "json"
    *
-   * @param {string|!Array<string>} type
+   *     // Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain
+   *     this.types()
+   *     // => ["text/html", "text/plain", "image/jpeg", "application/*""]
+   *
+   * @param {string|!Array<string>} [type]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -102,7 +110,7 @@ class Accepts extends _Accepts {
    *
    *     ['gzip', 'deflate']
    *
-   * @param {string|!Array<string>} encodings
+   * @param {string|!Array<string>} [encodings]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -117,7 +125,7 @@ class Accepts extends _Accepts {
    *
    *     ['gzip', 'deflate']
    *
-   * @param {string|!Array<string>} encodings
+   * @param {string|!Array<string>} [encodings]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -132,7 +140,7 @@ class Accepts extends _Accepts {
    *
    *     ['utf-8', 'utf-7', 'iso-8859-1']
    *
-   * @param {string|!Array<string>} charsets
+   * @param {string|!Array<string>} [charsets]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -147,7 +155,7 @@ class Accepts extends _Accepts {
    *
    *     ['utf-8', 'utf-7', 'iso-8859-1']
    *
-   * @param {string|!Array<string>} charsets
+   * @param {string|!Array<string>} [charsets]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -162,7 +170,7 @@ class Accepts extends _Accepts {
    *
    *     ['es', 'pt', 'en']
    *
-   * @param {string|!Array<string>} languages
+   * @param {string|!Array<string>} [languages]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -177,7 +185,7 @@ class Accepts extends _Accepts {
    *
    *     ['es', 'pt', 'en']
    *
-   * @param {string|!Array<string>} languages
+   * @param {string|!Array<string>} [lang]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -192,7 +200,7 @@ class Accepts extends _Accepts {
    *
    *     ['es', 'pt', 'en']
    *
-   * @param {string|!Array<string>} languages
+   * @param {string|!Array<string>} [langs]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
@@ -207,7 +215,7 @@ class Accepts extends _Accepts {
    *
    *     ['es', 'pt', 'en']
    *
-   * @param {string|!Array<string>} languages
+   * @param {string|!Array<string>} [language]
    * @param {...string} args
    * @returns {string|!Array<string>|false}
    */
