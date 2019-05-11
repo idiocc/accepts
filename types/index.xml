@@ -1,7 +1,7 @@
 <types namespace="_goa">
   <type interface name="Accepts" desc="Higher-Level Content Negotiation.">
-    <prop type="function((string|!Array<string>), ...string)" name="types">
-      Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
+    <prop type="function((string|!Array<string>)=, ...string): (string|!Array<string>|boolean)" name="types">
+      Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. _Examples_:
       - [Accept: text/html]
       `this.types('html') => "html"`
@@ -16,9 +16,12 @@
       - [Accept: text/*;q=.5, application/json]
       `this.types(['html', 'json']) => "json"`
       `this.types('html', 'json') => "json"`
+      When no types are given as arguments, returns all types accepted by the client in the preference order. _For example_:
+      - [Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain]
+      `[text/html, text/plain, image/jpeg, application/*]`
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="type">
-      Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
+    <prop type="function((string|!Array<string>)=, ...string): (string|!Array<string>|boolean)" name="type">
+      Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. _Examples_:
       - [Accept: text/html]
       `this.types('html') => "html"`
@@ -33,29 +36,32 @@
       - [Accept: text/*;q=.5, application/json]
       `this.types(['html', 'json']) => "json"`
       `this.types('html', 'json') => "json"`
+      When no types are given as arguments, returns all types accepted by the client in the preference order. _For example_:
+      - [Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain]
+      `[text/html, text/plain, image/jpeg, application/*]`
     </prop>
-    <prop type="function((string|!Array<string>), ...string)" name="encodings">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="encodings">
       Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="encoding">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="encoding">
       Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="charsets">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="charsets">
       Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="charset">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="charset">
       Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="languages">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="languages">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="langs">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="langs">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="lang">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="lang">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|!Array<string>|boolean" name="language">
+    <prop type="function((string|!Array<string>), ...string): (string|!Array<string>|boolean)" name="language">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </prop>
   </type>

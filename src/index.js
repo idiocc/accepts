@@ -49,7 +49,7 @@ export default class Accepts {
    *     this.types('html', 'json');
    *     // => "json"
    *
-   * @param {string|!Array<string>} types
+   * @param {string|!Array<string>} [types]
    * @param {...string} args
    */
   types(types, ...args) {

@@ -47,7 +47,7 @@ export default {
     },
   },
   'when extensions are given': {
-    'should convert to mime types'({ createRequest }) {
+    'converts to mime types'({ createRequest }) {
       const req = createRequest('text/plain, text/html')
       const accept = new Accepts(req)
       strictEqual(accept.types('html'), 'html')
