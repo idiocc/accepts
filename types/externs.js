@@ -24,7 +24,7 @@ _goa.Accepts
       `this.types('html', 'json') => "json"`
       When no types are given as arguments, returns all types accepted by the client in the preference order. _For example_:
       - [Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain]
-      `this.types() => [text/html, text/plain, image/jpeg, application/*]`
+      `this.types() => ["text/html", "text/plain", "image/jpeg", "application/*""]`
  * @type {function((string|!Array<string>)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.Accepts.prototype.types
@@ -46,7 +46,7 @@ _goa.Accepts.prototype.types
       `this.types('html', 'json') => "json"`
       When no types are given as arguments, returns all types accepted by the client in the preference order. _For example_:
       - [Accept: application/*;q=0.2, image/jpeg;q=0.8, text/html, text/plain]
-      `[text/html, text/plain, image/jpeg, application/*]`
+      `this.types() => ["text/html", "text/plain", "image/jpeg", "application/*""]`
  * @type {function((string|!Array<string>)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.Accepts.prototype.type
