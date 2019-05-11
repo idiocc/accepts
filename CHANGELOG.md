@@ -1,3 +1,9 @@
+## 11 May 2019
+
+### [1.0.4](https://github.com/idiocc/accepts/compare/v1.0.3...v1.0.4)
+
+- [doc] Allow empty arguments to functions, change documented `undefined` to `false`.
+
 ## 9 May 2019
 
 ### [1.0.3](https://github.com/idiocc/accepts/compare/v1.0.2...v1.0.3)
