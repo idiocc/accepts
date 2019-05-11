@@ -1,6 +1,6 @@
 {
   "name": "@goa/accepts",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "[fork] Higher-Level Content Negotiation In ES6 Optimised With Google Closure Compiler.",
   "main": "depack/index.js",
   "module": "src/index.js",
