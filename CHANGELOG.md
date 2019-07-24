@@ -1,3 +1,10 @@
+## 25 July 2019
+
+### [1.2.0](https://github.com/idiocc/accepts/compare/v1.1.0...v1.2.0)
+
+- [doc] Write **Wiki** with _Typal_ and _Documentary_.
+- [deps] Upd [`@goa/mime-types`](https://github.com/idiocc/mime-types) to not bundle `mime-db`.
+
 ## 11 May 2019
 
 ### [1.1.0](https://github.com/idiocc/accepts/compare/v1.0.4...v1.1.0)
