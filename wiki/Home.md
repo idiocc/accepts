@@ -1,0 +1,1 @@
+Accepts is used to negotiate possible network variables, e.g., charsets, _etc_.
