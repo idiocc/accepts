@@ -1,4 +1,4 @@
-const _Accepts = require('./depack')
+const _Accepts = require('./accepts')
 
 class Accepts extends _Accepts {
   /**

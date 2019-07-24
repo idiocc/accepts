@@ -1,3 +1,4 @@
+import '../types/externs'
 import Accepts from './'
 
-DEPACK_EXPORT = Accepts
+module.exports = Accepts

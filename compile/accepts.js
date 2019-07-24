@@ -1,7 +1,7 @@
+#!/usr/bin/env node
 'use strict';
-let DEPACK_EXPORT;
 const http = require('http');
-const path = require('path');'use strict';
+const path = require('path');             
 const n = /^\s*([^\s;]+)\s*(?:;(.*))?$/;
 function q(a) {
   return a.split(",").map((b, c) => {
@@ -705,7 +705,7 @@ function ba(a) {
 function ca(a) {
   return "string" == typeof a;
 }
-;DEPACK_EXPORT = aa;
+;module.exports = aa;
 
 
-module.exports = DEPACK_EXPORT
+//# sourceMappingURL=accepts.js.map
