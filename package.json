@@ -1,8 +1,8 @@
 {
   "name": "@goa/accepts",
   "version": "1.2.0",
-  "description": "[fork] Higher-Level Content Negotiation In ES6 Optimised With Google Closure Compiler.",
-  "main": "depack/index.js",
+  "description": "[fork] Higher-Level Content Negotiation In ES6 Optimised With JavaScript Compiler.",
+  "main": "compile/index.js",
   "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
@@ -19,7 +19,7 @@
     "e": "alanode"
   },
   "files": [
-    "depack",
+    "compile",
     "src",
     "types"
   ],

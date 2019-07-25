@@ -1,5 +1,9 @@
 ## 25 July 2019
 
+### [1.2.1](https://github.com/idiocc/accepts/compare/v1.2.0...v1.2.1)
+
+- [fix] Publish the `compile` directory.
+
 ### [1.2.0](https://github.com/idiocc/accepts/compare/v1.1.0...v1.2.0)
 
 - [doc] Write **Wiki** with _Typal_ and _Documentary_.
