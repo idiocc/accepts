@@ -14,43 +14,47 @@ export default class Accepts {
     this.negotiator = new Negotiator(req)
   }
   /**
-   * Check if the given `type(s)` is acceptable, returning
-   * the best match when true, otherwise `undefined`, in which
-   * case you should respond with 406 "Not Acceptable".
+   * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
    *
-   * The `type` value may be a single mime type string
-   * such as "application/json", the extension name
-   * such as "json" or an array `["json", "html", "text/plain"]`. When a list
-   * or array is given the _best_ match, if any is returned.
+   * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
    *
-   * Examples:
+   * _Examples_:
    *
-   *     // Accept: text/html
-   *     this.types('html');
-   *     // => "html"
+   * - Accept: text/html
    *
-   *     // Accept: text/*, application/json
-   *     this.types('html');
-   *     // => "html"
-   *     this.types('text/html');
-   *     // => "text/html"
-   *     this.types('json', 'text');
-   *     // => "json"
-   *     this.types('application/json');
-   *     // => "application/json"
+   *     ```js
+   *     this.types('html') => "html"
+   *     ```
+   * - Accept: text/＊, application/json
    *
-   *     // Accept: text/*, application/json
-   *     this.types('image/png');
-   *     this.types('png');
-   *     // => undefined
+   *     ```js
+   *     this.types('html') => "html"
+   *     this.types('text/html') => "text/html"
+   *     this.types('json', 'text') => "json"
+   *     this.types('application/json') => "application/json"
+   *     ```
+   * - Accept: text/＊, application/json
    *
-   *     // Accept: text/*;q=.5, application/json
-   *     this.types(['html', 'json']);
-   *     this.types('html', 'json');
-   *     // => "json"
+   *     ```js
+   *     this.types('image/png') => false
+   *     this.types('png') => false
+   *     ```
+   * - Accept: text/＊;q=.5, application/json
    *
-   * @param {string|!Array<string>} [types]
+   *     ```js
+   *     this.types(['html', 'json']) => "json"
+   *     this.types('html', 'json') => "json"
+   *     ```
+   * - Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain
+   *
+   *     ```js
+   *     this.types() => ["text/html", "text/plain",
+   *       "image/jpeg", "application/＊"]
+   *     ```
+   *
+   * @param {string|!Array<string>} [types] A single or multiple types, either as an array or variable arguments.
    * @param {...string} args
+   * @returns {string|!Array<string>|false}
    */
   types(types, ...args) {
     // support flattened arguments
