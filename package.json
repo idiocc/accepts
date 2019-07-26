@@ -50,7 +50,7 @@
     "@goa/negotiator": "^1.0.1",
     "@rqt/aqt": "^1.2.6",
     "alamode": "^2.3.4",
-    "documentary": "^1.27.7",
+    "documentary": "^1.28.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"

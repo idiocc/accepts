@@ -84,6 +84,7 @@ export default {
       strictEqual(accept.types('text/plain'), 'text/plain')
     },
   },
+  /* start example */
   'when present in Accept as a type match': {
     'returns the type'({ createRequest }) {
       const req = createRequest('application/json, */*')
@@ -102,4 +103,5 @@ export default {
       strictEqual(accept.types('image/png'), false)
     },
   },
+  /* end example */
 }

@@ -2,9 +2,59 @@
 
 [![npm version](https://badge.fury.io/js/%40goa%2Faccepts.svg)](https://npmjs.org/package/@goa/accepts)
 
-`@goa/accepts` is a [fork](https://github.com/jshttp/accepts/) of Higher-Level Content Negotiation In ES6 Optimised With JavaScript Compiler. It already includes `mime-types` database and is bundled into a single JS file for faster execution.
+`@goa/accepts` is a fork of <kbd>🏛 [Higher-Level Content Negotiation](https://github.com/jshttp/accepts/)</kbd> In ES6 Optimised With [JavaScript Compiler](https://compiler.page).
 
-The original module has been updated to be used in [`@goa/koa`](https://artdecocode.com/goa/): _Koa_ web server compiled with _Google Closure Compiler_ using [**Depack**](https://artdecocode.com/depack/) into a single file library (0 dependencies).
+<table><tr><td>
+
+The original module was edited with annotations and other changes required for it to be used in [`@goa/koa`](https://artdecocode.com/goa/): _Koa_ web server [compiled](https://compiler.page) with _Closure Compiler_ using [**Depack**](https://artdecocode.com/depack/) into a single file library (with 1 dependency such as mime-db).
+
+<details><summary>Read more about the compilation.</summary>
+
+All dependencies are specified as dev dependencies because they are flattened into a single JS file by the compiler, unless the special `require(/* depack ok */ 'modulejs')` was called, which will require the package at run-time, for instance this is how mime-db is required by Goa.
+
+The package specifies the following entry points:
+
+- <kbd>[commonjs/main](/compile/index.js)</kbd>: the _require_ entry optimised with compiler. Used for individual consumption of the package's API.
+    ```m
+    compile
+    ├── accepts.js
+    ├── accepts.js.map
+    └── index.js
+    ```
+- <kbd>[es6/module](/src/index.js)</kbd>: the source code that can be used in compilation of other packages, e.g., `@goa/goa`.
+    ```m
+    src
+    ├── depack.js
+    └── index.js
+    ```
+
+</details></td><td>
+
+The tests were rewritten using [context testing](https://contexttesting.com). The [Http Context](https://npmjs.org/@contexts/http), in particular the Cookie Tester was used to assert on presence of entries, and their attributes.
+
+<details><summary>Show the tests.</summary>
+
+```js
+'when present in Accept as a type match': {
+  'returns the type'({ createRequest }) {
+    const req = createRequest('application/json, */*')
+    const accept = new Accepts(req)
+    strictEqual(accept.types('text/html'), 'text/html')
+    strictEqual(accept.types('text/plain'), 'text/plain')
+    strictEqual(accept.types('image/png'), 'image/png')
+  },
+},
+'when present in Accept as a subtype match': {
+  'returns the type'({ createRequest }) {
+    const req = createRequest('application/json, text/*')
+    const accept = new Accepts(req)
+    strictEqual(accept.types('text/html'), 'text/html')
+    strictEqual(accept.types('text/plain'), 'text/plain')
+    strictEqual(accept.types('image/png'), false)
+  },
+},
+```
+</details></td></tr></table>
 
 ```sh
 yarn add @goa/accepts
@@ -16,10 +66,9 @@ yarn add @goa/accepts
 - [API](#api)
 - [class Accepts](#class-accepts)
   * [`constructor(req: http.IncomingMessage): Accepts`](#constructorreq-httpincomingmessage-accepts)
-    * [`_goa.Accepts`](#type-_goaaccepts)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## API
 
@@ -29,16 +78,16 @@ The package is available by importing its default function:
 import Accepts from '@goa/accepts'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
 ## class Accepts
 
 The instances of this class allow to negotiate languages, charsets, encoding and types and additionally:
 
-- Allows types as an array or arguments list, i.e. `(['text/html', 'application/json'])` as well as `('text/html', 'application/json')`;
-- Allows type shorthands such as json;
-- Returns false when no types match;
-- Treats non-existent headers as *.
+- Allow types as an array or arguments list, i.e. `(['text/html', 'application/json'])` as well as `('text/html', 'application/json')`;
+- Allow type shorthands such as json;
+- Return false when no types match;
+- Treat non-existent headers as *.
 
 ### `constructor(`<br/>&nbsp;&nbsp;`req: http.IncomingMessage,`<br/>`): Accepts`
 
@@ -96,22 +145,9 @@ Response: <b>hello, world!</b> 	Type: text/html
 Response: hello, world! 	Type: text/plain
 ```
 
-__<a name="type-_goaaccepts">`_goa.Accepts`</a>__: Higher-Level Content Negotiation.
+<kbd>[🔖 View all instance methods in Wiki](../../wiki/Accepts)</kbd>
 
-|      Name      |                                                     Type                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| -------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| __types*__     | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".<br/>      The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order. _Examples_:<li>      [Accept: text/html]</li>      `this.types('html') => "html"`<li>      [Accept: text/＊, application/json]</li>      `this.types('html') => "html"`<br/>      `this.types('text/html') => "text/html"`<br/>      `this.types('json', 'text') => "json"`<br/>      `this.types('application/json') => "application/json"`<li>      [Accept: text/＊, application/json]</li>      `this.types('image/png') => false`<br/>      `this.types('png') => false`<li>      [Accept: text/＊;q=.5, application/json]</li>      `this.types(['html', 'json']) => "json"`<br/>      `this.types('html', 'json') => "json"`<li>      [Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain]</li>      `this.types() => ["text/html", "text/plain", "image/jpeg", "application/＊"]`                                                                                                                                  |
-| __type*__      | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".<br/>      The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order. _Examples_:<li>      [Accept: text/html]</li>      `this.types('html') => "html"`<li>      [Accept: text/＊, application/json]</li>      `this.types('html') => "html"`<br/>      `this.types('text/html') => "text/html"`<br/>      `this.types('json', 'text') => "json"`<br/>      `this.types('application/json') => "application/json"`<li>      [Accept: text/＊, application/json]</li>      `this.types('image/png') => false`<br/>      `this.types('png') => false`<li>      [Accept: text/＊;q=.5, application/json]</li>      `this.types(['html', 'json']) => "json"`<br/>      `this.types('html', 'json') => "json"`<br/>      When no types are given as arguments, returns all types accepted by the client in the preference order. _For example_:<li>      [Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain]</li>      `this.types() => ["text/html", "text/plain", "image/jpeg", "application/＊"]` |
-| __encodings*__ | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| __encoding*__  | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| __charsets*__  | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| __charset*__   | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| __languages*__ | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| __langs*__     | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| __lang*__      | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| __language*__  | <em>function((string \| !Array&lt;string&gt;)=, ...string): (string \| !Array&lt;string&gt; \| boolean)</em> | Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
 ## Copyright
 
@@ -123,23 +159,24 @@ Original work, documentation and testing by [Jonathan Ong and Douglas Christophe
   <tr>
     <th>
       <a href="https://artd.eco">
-        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+        <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
+          alt="Art Deco">
       </a>
     </th>
     <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2019</th>
     <th>
       <a href="https://idio.cc">
-        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
+        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio">
       </a>
     </th>
     <th>
       <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
-          alt="Tech Nation Visa" />
+        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
+          alt="Tech Nation Visa">
       </a>
     </th>
     <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>

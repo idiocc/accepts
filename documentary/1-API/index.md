@@ -12,10 +12,10 @@ import Accepts from '@goa/accepts'
 
 The instances of this class allow to negotiate languages, charsets, encoding and types and additionally:
 
-- Allows types as an array or arguments list, i.e. `(['text/html', 'application/json'])` as well as `('text/html', 'application/json')`;
-- Allows type shorthands such as json;
-- Returns false when no types match;
-- Treats non-existent headers as *.
+- Allow types as an array or arguments list, i.e. `(['text/html', 'application/json'])` as well as `('text/html', 'application/json')`;
+- Allow type shorthands such as json;
+- Return false when no types match;
+- Treat non-existent headers as *.
 
 ```### constructor => Accepts
 [
@@ -28,6 +28,6 @@ Create a new _Accepts_ object for the given request from a client.
 %EXAMPLE: example, ../src => @goa/accepts%
 %FORK example%
 
-%TYPEDEF types/index.xml%
+<kbd>[🔖 View all instance methods in Wiki](../../wiki/Accepts)</kbd>
 
 %~%
