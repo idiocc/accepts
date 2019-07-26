@@ -1,3 +1,9 @@
+## 26 July 2019
+
+### [1.2.2](https://github.com/idiocc/accepts/compare/v1.2.1...v1.2.2)
+
+- [doc] Update doc.
+
 ## 25 July 2019
 
 ### [1.2.1](https://github.com/idiocc/accepts/compare/v1.2.0...v1.2.1)
