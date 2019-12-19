@@ -1,3 +1,10 @@
+## 19 December 2019
+
+### [2.0.0](https://github.com/idiocc/accepts/compare/v1.2.2...v2.0.0)
+
+- [types] Compile types using functions and publish `typedefs.json`.
+- [license] Update to AGPL-3.0.
+
 ## 26 July 2019
 
 ### [1.2.2](https://github.com/idiocc/accepts/compare/v1.2.1...v1.2.2)
