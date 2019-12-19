@@ -2,12 +2,14 @@
 
 - [ ] Add a new item to the todo list. -->
 
-## Copyright
+## Copyright & License
 
-Original work, documentation and testing by [Jonathan Ong and Douglas Christopher Wilson](https://github.com/jshttp/accepts).
+GNU Affero General Public License v3.0
+
+[Original work, documentation and testing](https://github.com/jshttp/accepts) by Jonathan Ong and Douglas Christopher Wilson under MIT license found in [COPYING](COPYING).
 
 ---
 
-<IdioFooter />
+<idio-footer />
 
 %~ -1%

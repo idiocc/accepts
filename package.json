@@ -1,7 +1,7 @@
 {
   "name": "@goa/accepts",
   "version": "1.2.2",
-  "description": "[fork] Higher-Level Content Negotiation In ES6 Optimised With JavaScript Compiler.",
+  "description": "Higher-Level Content Negotiation In ES6 Optimised With JavaScript Compiler.",
   "main": "compile/index.js",
   "module": "src/index.js",
   "scripts": {
@@ -9,19 +9,23 @@
     "test": "yarn t test/spec test/mask",
     "spec": "yarn t test/spec",
     "mask": "yarn t test/mask",
-    "compile": "depack-dev src/depack -o compile/accepts.js -c -a -p",
+    "compile": "depack src/depack -o compile/accepts.js -c -a -p --source_map_include_content",
     "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "doc": "doc -o README.md -n _goa -d",
+    "wiki": "doc wiki -W wiki.git -n _goa -a -d",
     "b": "alamode src -o build -s",
-    "d": "typal types/index.js types/externs.js",
+    "d": "yarn-s d1 externs",
+    "d1": "typal compile/index.js -u",
+    "externs": "typal types/externs.js -e",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
     "compile",
     "src",
-    "types"
+    "types",
+    "example/jsdoc"
   ],
   "externs": "types/externs.js",
   "repository": {
@@ -40,22 +44,24 @@
     "content-type"
   ],
   "author": "Anton <anton@adc.sh>",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/idiocc/accepts/issues"
   },
-  "homepage": "https://github.com/idiocc/accepts#readme",
+  "homepage": "https://www.idio.cc",
   "devDependencies": {
+    "@goa/koa": "^2.0.0",
     "@goa/mime-types": "^1.1.0",
     "@goa/negotiator": "^1.0.1",
-    "@rqt/aqt": "^1.2.6",
-    "alamode": "^2.3.4",
-    "documentary": "^1.28.0",
+    "@rqt/aqt": "^1.3.0",
+    "alamode": "^3.3.0",
+    "depack": "^1.0.1",
+    "documentary": "^1.35.1",
     "eslint-config-artdeco": "1.0.1",
-    "yarn-s": "1.1.0",
-    "zoroaster": "^4.1.1-alpha"
+    "yarn-s": "1.2.1",
+    "zoroaster": "^4.1.2"
   },
   "dependencies": {
-    "mime-db": "^1.40.0"
+    "mime-db": "^1.42.0"
   }
 }

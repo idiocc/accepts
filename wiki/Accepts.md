@@ -11,4 +11,4 @@ The main API consists of 4 main functions:
 
 The rest of the methods (e.g., `type`, `lang`) are just aliases to the public functions.
 
-<typedef narrow flatten>../accepts/types/index.xml</typedef>
+<typedef narrow flatten slimFunctions>types/index.xml</typedef>

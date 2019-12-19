@@ -363,7 +363,7 @@ class U {
     return Q(this.headers.accept, a);
   }
 }
-;const {extname:V} = path;
+;const V = path.extname;
 /*
  MIT
  Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>

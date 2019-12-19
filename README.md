@@ -1,60 +1,8 @@
 # @goa/accepts
 
-[![npm version](https://badge.fury.io/js/%40goa%2Faccepts.svg)](https://npmjs.org/package/@goa/accepts)
+[![npm version](https://badge.fury.io/js/%40goa%2Faccepts.svg)](https://www.npmjs.com/package/@goa/accepts)
 
 `@goa/accepts` is a fork of <kbd>🏛 [Higher-Level Content Negotiation](https://github.com/jshttp/accepts/)</kbd> In ES6 Optimised With [JavaScript Compiler](https://compiler.page).
-
-<table><tr><td>
-
-The original module was edited with annotations and other changes required for it to be used in [`@goa/koa`](https://artdecocode.com/goa/): _Koa_ web server [compiled](https://compiler.page) with _Closure Compiler_ using [**Depack**](https://artdecocode.com/depack/) into a single file library (with 1 dependency such as mime-db).
-
-<details><summary>Read more about the compilation.</summary>
-
-All dependencies are specified as dev dependencies because they are flattened into a single JS file by the compiler, unless the special `require(/* depack ok */ 'modulejs')` was called, which will require the package at run-time, for instance this is how mime-db is required by Goa.
-
-The package specifies the following entry points:
-
-- <kbd>[commonjs/main](/compile/index.js)</kbd>: the _require_ entry optimised with compiler. Used for individual consumption of the package's API.
-    ```m
-    compile
-    ├── accepts.js
-    ├── accepts.js.map
-    └── index.js
-    ```
-- <kbd>[es6/module](/src/index.js)</kbd>: the source code that can be used in compilation of other packages, e.g., `@goa/goa`.
-    ```m
-    src
-    ├── depack.js
-    └── index.js
-    ```
-
-</details></td><td>
-
-The tests were rewritten using [context testing](https://contexttesting.com). The [Http Context](https://npmjs.org/@contexts/http), in particular the Cookie Tester was used to assert on presence of entries, and their attributes.
-
-<details><summary>Show the tests.</summary>
-
-```js
-'when present in Accept as a type match': {
-  'returns the type'({ createRequest }) {
-    const req = createRequest('application/json, */*')
-    const accept = new Accepts(req)
-    strictEqual(accept.types('text/html'), 'text/html')
-    strictEqual(accept.types('text/plain'), 'text/plain')
-    strictEqual(accept.types('image/png'), 'image/png')
-  },
-},
-'when present in Accept as a subtype match': {
-  'returns the type'({ createRequest }) {
-    const req = createRequest('application/json, text/*')
-    const accept = new Accepts(req)
-    strictEqual(accept.types('text/html'), 'text/html')
-    strictEqual(accept.types('text/plain'), 'text/plain')
-    strictEqual(accept.types('image/png'), false)
-  },
-},
-```
-</details></td></tr></table>
 
 ```sh
 yarn add @goa/accepts
@@ -65,20 +13,24 @@ yarn add @goa/accepts
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [class Accepts](#class-accepts)
-  * [`constructor(req: http.IncomingMessage): Accepts`](#constructorreq-httpincomingmessage-accepts)
-- [Copyright](#copyright)
+  * [`constructor(req): Accepts`](#constructorreq-httpincomingmessage-accepts)
+- [Copyright & License](#copyright--license)
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/0.svg?sanitize=true">
+</a></p>
 
 ## API
 
-The package is available by importing its default function:
+The package is available by importing its default class:
 
 ```js
 import Accepts from '@goa/accepts'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/1.svg?sanitize=true">
+</a></p>
 
 ## class Accepts
 
@@ -89,9 +41,11 @@ The instances of this class allow to negotiate languages, charsets, encoding and
 - Return false when no types match;
 - Treat non-existent headers as *.
 
-### `constructor(`<br/>&nbsp;&nbsp;`req: http.IncomingMessage,`<br/>`): Accepts`
+### <code><ins>constructor</ins>(</code><sub><br/>&nbsp;&nbsp;`req: !http.IncomingMessage,`<br/></sub><code>): <i>Accepts</i></code>
 
-Create a new _Accepts_ object for the given request from a client.
+Create a new Accepts object for the given request from a client.
+
+ - <kbd><strong>req*</strong></kbd> <em><code><a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage" title="A readable stream that receives data from the client in chunks. The first argument of the http.Server.on(&quot;request&quot;) event."><img src=".documentary/type-icons/node.png" alt="Node.JS Docs">!http.IncomingMessage</a></code></em>: The request.
 
 ```js
 import Accepts from '@goa/accepts'
@@ -147,11 +101,15 @@ Response: hello, world! 	Type: text/plain
 
 <kbd>[🔖 View all instance methods in Wiki](../../wiki/Accepts)</kbd>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/2.svg?sanitize=true">
+</a></p>
 
-## Copyright
+## Copyright & License
 
-Original work, documentation and testing by [Jonathan Ong and Douglas Christopher Wilson](https://github.com/jshttp/accepts).
+GNU Affero General Public License v3.0
+
+[Original work, documentation and testing](https://github.com/jshttp/accepts) by Jonathan Ong and Douglas Christopher Wilson under MIT license found in [COPYING](COPYING).
 
 ---
 
@@ -179,4 +137,6 @@ Original work, documentation and testing by [Jonathan Ong and Douglas Christophe
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/-1.svg?sanitize=true">
+</a></p>

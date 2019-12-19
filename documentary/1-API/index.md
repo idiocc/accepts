@@ -1,6 +1,6 @@
 ## API
 
-The package is available by importing its default function:
+The package is available by importing its default class:
 
 ```js
 import Accepts from '@goa/accepts'
@@ -17,13 +17,7 @@ The instances of this class allow to negotiate languages, charsets, encoding and
 - Return false when no types match;
 - Treat non-existent headers as *.
 
-```### constructor => Accepts
-[
-  ["req", "http.IncomingMessage"]
-]
-```
-
-Create a new _Accepts_ object for the given request from a client.
+<method level="3" noArgTypesInToc name="Accepts.constructor">types/index.xml</method>
 
 %EXAMPLE: example, ../src => @goa/accepts%
 %FORK example%
