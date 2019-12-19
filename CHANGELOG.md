@@ -1,5 +1,9 @@
 ## 19 December 2019
 
+### [2.0.1](https://github.com/idiocc/accepts/compare/v2.0.0...v2.0.1)
+
+- [package] Publish the `typedefs.json` file.
+
 ### [2.0.0](https://github.com/idiocc/accepts/compare/v1.2.2...v2.0.0)
 
 - [types] Compile types using functions and publish `typedefs.json`.

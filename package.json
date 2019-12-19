@@ -24,7 +24,8 @@
     "compile",
     "src",
     "types",
-    "example/jsdoc"
+    "example/jsdoc",
+    "typedefs.json"
   ],
   "externs": "types/externs.js",
   "repository": {
