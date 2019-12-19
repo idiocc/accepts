@@ -14,7 +14,6 @@
     "lint": "eslint .",
     "doc": "doc -o README.md -n _goa -d",
     "wiki": "doc wiki -W wiki.git -n _goa -a -d",
-    "b": "alamode src -o build -s",
     "d": "yarn-s d1 externs",
     "d1": "typal compile/index.js -u",
     "externs": "typal types/externs.js -e",
@@ -32,6 +31,7 @@
     "type": "git",
     "url": "git://github.com/idiocc/accepts.git"
   },
+  "typedefs": "typedefs.json",
   "keywords": [
     "accepts",
     "goa",

@@ -1,0 +1,6 @@
+{
+  "_goa.Accepts": {
+    "link": "https://github.com/idiocc/accepts/wiki/Accepts#type-accepts",
+    "description": "Higher-Level Content Negotiation."
+  }
+}
